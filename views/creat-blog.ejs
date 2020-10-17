@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+
+
+    <form action="/blog-req" method="post">
+        <label for="title">name:</label>
+        <input type="text" id="title" name='title'>
+        <label for="description">about:</label>
+        <input type="description" id="description" name='title'>
+        <label for='body'>content:</label>
+        <input type="text" id="body" name='body'>
+        <button>sumbit</button>
+
+    
+    </form>
+
+
+
+    <%-  include('./partials/footer.ejs') %>
+</body>
+</html>
