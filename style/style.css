@@ -48,3 +48,40 @@ footer{
     justify-content: center;
     background-color: cornsilk;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto ;
+    padding: 1;
+}
+input{
+    margin: 10px;
+    padding: 4px;
+}
+button{
+    margin: 10px;
+    width: 100px;
+    align-self: center;
+}
+.blogs{
+    display: flex;
+    margin: 10px;
+    width: 150px;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 3PX;
+}
+section{
+    display: flex;
+    flex-direction: column;
+}
+.blogss.title{
+    margin: 5px;
+    padding: 5px;
+}
+.blogss-text{
+    margin: 5px;
+    padding: 5px;
+}

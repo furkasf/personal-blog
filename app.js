@@ -25,12 +25,22 @@ mongoose.connect(key, {
   
   //routers
 
-  app.get('/', (req, res) => res.render('home', {title : 'home'}))
+  app.get('/', (req, res) => {
+    Blog.find()
+    .then((result) => res.render('home', {title : 'home', blog : result}))
+    .catch(err => console.log(err))
+  })
   app.get('/creat-blog', (req, res) => res.render('creat-blog', {title : 'blog-creat'}))
   app.post('/blog-req', (req, res) => {
     const blog = new Blog(req.body)
     blog.save()
-      .then(() => res.redirect('/home'))
+      .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
+  })
+  app.get('/blog/:id', (req, res) =>{
+    const id = req.params.id;
+    Blog.findById(id)
+      .then(result => res.render('detail',{title : 'blog', blog : result}))
       .catch(err => console.log(err))
   })
   app.get('/about', (req, res) => res.render('about', {title : 'about'}))
