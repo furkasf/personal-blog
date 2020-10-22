@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>dsd</title>
-    
-</head>
+<head><%=title%></head>
 <body>
     <%- include('./partials/nav.ejs') %>
     <div>
@@ -11,7 +8,22 @@
         <p><%= blog.discription %></p>
         <p><%= blog.body %></p>
     </div>
+    <a href="" class='remove' data-doc='<%= blog._id%>'>remove</a>
 
     <%-  include('./partials/footer.ejs') %>
+    <script>
+        const remove = document.querySelector('.remove');
+        const target = `blog/${remove.dataset.doc}`
+        
+        //send fetch request
+        remove.addEventListener('click', () =>{
+            fetch(target, {
+                method : 'DELETE'
+            })
+                .then(response => response.json())
+                .then(data => window.location.href = 'redirect')
+                .catch(err => console.log(err))
+        })
+    </script>
 </body>
 </html>

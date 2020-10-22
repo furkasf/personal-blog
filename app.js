@@ -6,14 +6,14 @@ const Blog = require('./model/blog.js')
 const app = express();
 
 //databse conection
-const key = 'mongodb+srv://furkan:iYCD1EkbrUPwbAUj@blog.xondd.mongodb.net/blog?retryWrites=true&w=majority';
+const key = '';
 mongoose.connect(key, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true
   })
-  .then(() => app.listen(3000))
+  .then(() => console.log( 'Database Connected' ))
   .catch(err => console.log(err))
 
   //middle ware setings
@@ -35,6 +35,14 @@ mongoose.connect(key, {
     const blog = new Blog(req.body)
     blog.save()
       .then(() => res.redirect('/'))
+      .catch(err => console.log(err))
+  })
+  app.delete('blog/:id', (req, res) =>{
+    const id = req.params.id;
+    
+    //delete blog from data base
+    Blog.findByIdAndDelete(id)
+      .then(() => res.json({redirect : '/'}))
       .catch(err => console.log(err))
   })
   app.get('/blog/:id', (req, res) =>{
